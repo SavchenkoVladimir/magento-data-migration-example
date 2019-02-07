@@ -63,8 +63,7 @@ atlassian*
 !/var/.htaccess
 /vendor/*
 !/vendor/.htaccess
+!/vendor/magento/data-migration-tool/
 /generated/*
 !/generated/.htaccess
 .DS_Store
-
-!/vendor/magento/data-migration-tool/*

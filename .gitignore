@@ -63,7 +63,10 @@ atlassian*
 !/var/.htaccess
 /vendor/*
 !/vendor/.htaccess
-!/vendor/magento/data-migration-tool/
+!/vendor/magento/data-migration-tool/etc/opensource-to-opensource/map-eav.xml
+!/vendor/magento/data-migration-tool/etc/opensource-to-opensource/1.9.4.0/config.xml
+!/vendor/magento/data-migration-tool/etc/opensource-to-opensource/1.9.4.0/map.xml
+!/vendor/magento/data-migration-tool/etc/opensource-to-opensource/1.9.4.0/map-tier-price.xml
 /generated/*
 !/generated/.htaccess
 .DS_Store

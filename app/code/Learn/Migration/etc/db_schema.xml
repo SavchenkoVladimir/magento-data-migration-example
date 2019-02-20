@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magecom
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@magecom.net so we can send you a copy immediately.
+ *
+ * @category Learn
+ * @package Learn_Migration
+ * @copyright Copyright (c) 2019 Magecom, Inc. (http://www.magecom.net)
+ * @license  http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="migration_change_field_table" resource="default" engine="innodb"
+           comment="migration change field table">
+        <column xsi:type="bigint" name="id" padding="20" unsigned="true" nullable="false" identity="true"
+                comment="Primary key"/>
+        <column xsi:type="varchar" name="name_change_field_name_m2" length="225" nullable="true" default="null"
+                comment="name change field name m2"/>
+        <column xsi:type="text" name="name_change_field_type" nullable="true"
+                comment="name change field type"/>
+        <column xsi:type="varchar" name="modify_content" length="225" nullable="true" default="null"
+                comment="modify_content"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+    <table name="migration_change_my_name_table_m2" resource="default" engine="innodb"
+           comment="migration change my name table m2">
+        <column xsi:type="bigint" name="id" padding="20" unsigned="true" nullable="false" identity="true"
+                comment="Primary key"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+    <table name="migration_split_me_table_main" resource="default" engine="innodb"
+           comment="migration split me table main">
+        <column xsi:type="bigint" name="id" padding="20" unsigned="true" nullable="false" identity="true"
+                comment="Primary key"/>
+        <column xsi:type="varchar" name="lastname_split_2" length="225" nullable="true" default="null"
+                comment="lastname split 2"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+    <table name="migration_split_me_table_person" resource="default" engine="innodb"
+           comment="migration split me table person">
+        <column xsi:type="bigint" name="id" padding="20" unsigned="true" nullable="false" identity="true"
+                comment="Primary key"/>
+        <column xsi:type="bigint" name="account_id_split_1" padding="20" nullable="true" identity="false"
+                comment="account id split 1"/>
+        <column xsi:type="varchar" name="name_split_1" length="225" nullable="true" default="null"
+                comment="name split 1"/>
+        <column xsi:type="int" name="age_split_1" padding="11" nullable="true" identity="false"
+                comment="age split 1"/>
+        <column xsi:type="bigint" name="main_table_id" padding="20" nullable="false" identity="false" unsigned="true"
+                comment="main table id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="migration_split_me_table_person_TO_migration_split_me_table_main"
+                    table="migration_split_me_table_person" column="main_table_id"
+                    referenceTable="migration_split_me_table_main" referenceColumn="id" onDelete="CASCADE"/>
+    </table>
+    <table name="migration_combine_me_table" resource="default" engine="innodb"
+           comment="migration combine me table">
+        <column xsi:type="bigint" name="id" padding="20" unsigned="true" nullable="false" identity="true"
+                comment="Primary key"/>
+        <column xsi:type="bigint" name="account_id" padding="20" nullable="true" identity="false"
+                comment="account id"/>
+        <column xsi:type="varchar" name="lastname_connect" length="225" nullable="true"
+                default="null" comment="lastname connect"/>
+        <column xsi:type="int" name="age" padding="11" nullable="true" identity="false"
+                comment="age"/>
+        <column xsi:type="int" name="is_new" padding="11" nullable="true" identity="false"
+                comment="is new"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

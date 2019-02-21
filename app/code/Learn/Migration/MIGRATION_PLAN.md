@@ -15,6 +15,7 @@
  passwords, additional entities if needed
  - setup map_file and magento 1 key
  - create map.xml from sample
+ - implement other config files like map-tier-price.xml etc. if needed
 9. Run migrate:settings and resolve errors if exist.
 10. Run migrate:data and check errors.
 11. Exclude tables and fields in according to migration.log and the ticket requirements
@@ -22,7 +23,8 @@
 13. Set <steps>, and implement classes to validate fields and data to migrate.
 14. Setup mapping to migrate data from fields to other fields.
 15. Implement classes to transform migrated data.
-16. Migrate data.
-17. Test migrated data.
-18. Make results backup.
-19. Push code and results backup to github.
+16. Implement models which migrate custom data (custom tables, split tables, combine tables)
+17. Migrate data.
+18. Test migrated data.
+19. Make results backup.
+20. Push code and results backup to github.

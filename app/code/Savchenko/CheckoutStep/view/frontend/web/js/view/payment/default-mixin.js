@@ -33,7 +33,13 @@ define(
         // Override cache-on-delivery method
         // Disable place order and go to summary page
         var mixin = {
-            placeOrder: function (data, event) {
+
+            defaults: {
+                template: 'Savchenko_CheckoutStep/payment/cashondelivery'
+            },
+
+            proceedSummary: function (data, event) {
+
                 if (event) {
                     event.preventDefault();
                 }

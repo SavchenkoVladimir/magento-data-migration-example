@@ -1,0 +1,15 @@
+<div class="payment" style="border-bottom: 1px solid rgb(51, 51, 51);">
+    <h4>Payment summary</h4>
+    <ul>
+        <li data-bind="text: method().title"></li>
+        <li data-bind="text: address().city"></li>
+        <li data-bind="text: address().street"></li>
+        <li data-bind="text: address().postcode"></li>
+        <li data-bind="text: address().countryId"></li>
+    </ul>
+    <div class="shipping-information-title">
+        <button class="action action-edit" data-bind="click: edit">
+            <span data-bind="i18n: 'edit'"></span>
+        </button>
+    </div>
+</div>

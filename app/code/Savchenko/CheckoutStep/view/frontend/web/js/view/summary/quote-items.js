@@ -1,5 +1,3 @@
-<?xml version="1.0"?>
-<!--
 /**
  * Magecom
  *
@@ -18,11 +16,34 @@
  * @copyright Copyright (c) 2019 Magecom, Inc. (http://www.magecom.net)
  * @license  http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
--->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Savchenko_CheckoutStep" setup_version="0.1.0">
-        <sequence>
-            <module name="Magento_Checkout"/>
-        </sequence>
-    </module>
-</config>
+
+define(
+    [
+        'ko',
+        'uiComponent',
+        'Magento_Checkout/js/model/quote',
+        'Magento_Catalog/js/price-utils'
+    ],
+    function (
+        ko,
+        Component,
+        quote,
+        priceUtils
+    ) {
+        'use strict';
+
+        return Component.extend({
+            defaults: {
+                template: 'Savchenko_CheckoutStep/summary/quote-items'
+            },
+
+            getQuoteItems: function(){
+                return quote.getItems();
+            },
+
+            getFormattedPrice: function (price) {
+                return priceUtils.formatPrice(price, quote.getPriceFormat());
+            }
+        });
+    }
+);

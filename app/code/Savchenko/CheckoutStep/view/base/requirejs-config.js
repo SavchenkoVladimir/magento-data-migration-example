@@ -20,7 +20,7 @@
 var config = {
     'config': {
         'mixins': {
-            'Magento_Checkout/js/view/payment/default': {
+            'Magento_OfflinePayments/js/view/payment/method-renderer/cashondelivery-method': {
                 'Savchenko_CheckoutStep/js/view/payment/default-mixin': true
             }
         }

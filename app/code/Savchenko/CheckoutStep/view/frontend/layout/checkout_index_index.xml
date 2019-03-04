@@ -32,12 +32,29 @@
                                         <!-- The new step you add -->
                                         <item name="summary" xsi:type="array">
                                             <item name="component" xsi:type="string">Savchenko_CheckoutStep/js/view/summary</item>
-                                            <!--To display step content before shipping step "sortOrder" value should be < 1-->
-                                            <!--To display step content between shipping step and payment step  1 < "sortOrder" < 2 -->
-                                            <!--To display step content after payment step "sortOrder" > 2 -->
-                                            <item name="sortOrder" xsi:type="string">30</item>
+                                            <item name="displayArea" xsi:type="string">summary</item>
+                                                <item name="sortOrder" xsi:type="string">30</item>
                                             <item name="children" xsi:type="array">
-                                                <!--add here child component declaration for your step-->
+                                                <item name="shipping-summary" xsi:type="array">
+                                                    <item name="component" xsi:type="string">Savchenko_CheckoutStep/js/view/summary/shipping</item>
+                                                    <item name="displayArea" xsi:type="string">summary</item>
+                                                    <item name="sortOrder" xsi:type="string">10</item>
+                                                </item>
+                                                <item name="payment-summary" xsi:type="array">
+                                                    <item name="component" xsi:type="string">Savchenko_CheckoutStep/js/view/summary/payment</item>
+                                                    <item name="displayArea" xsi:type="string">summary</item>
+                                                    <item name="sortOrder" xsi:type="string">20</item>
+                                                </item>
+                                                <item name="quote-items-summary" xsi:type="array">
+                                                    <item name="component" xsi:type="string">Savchenko_CheckoutStep/js/view/summary/quote-items</item>
+                                                    <item name="displayArea" xsi:type="string">summary</item>
+                                                    <item name="sortOrder" xsi:type="string">30</item>
+                                                </item>
+                                                <item name="buttons-set" xsi:type="array">
+                                                    <item name="component" xsi:type="string">Savchenko_CheckoutStep/js/view/summary/buttons-set</item>
+                                                    <item name="displayArea" xsi:type="string">summary</item>
+                                                    <item name="sortOrder" xsi:type="string">40</item>
+                                                </item>
                                             </item>
                                         </item>
                                     </item>

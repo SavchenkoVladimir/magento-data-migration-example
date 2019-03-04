@@ -21,52 +21,55 @@ define(
     [
         'ko',
         'uiComponent',
-        'underscore',
         'Magento_Checkout/js/model/quote',
-        'Magento_Checkout/js/model/step-navigator',
-        'mage/translate'
+        'Magento_Checkout/js/model/step-navigator'
     ],
     function (
         ko,
         Component,
-        _,
         quote,
-        stepNavigator,
-        $t
+        stepNavigator
     ) {
         'use strict';
 
         return Component.extend({
             defaults: {
-                template: 'Savchenko_CheckoutStep/summary'
+                template: 'Savchenko_CheckoutStep/summary/shipping'
             },
-            isVisible: ko.observable('summary'),
 
-            /**
-             *
-             * @returns {*}
-             */
+            shippingData: ko.observable({}),
+
             initialize: function () {
                 this._super();
+                let self = this;
 
-                stepNavigator.registerStep(
-                    'summary',
-                    null,
-                    $t('Order summary'),
-                    this.isVisible,
-                    _.bind(this.navigate, this),
-                    30
-                );
+                quote.shippingAddress.subscribe(function (address) {
+                    self.updateShippingData(address);
+                }, this);
 
                 return this;
             },
 
-            /**
-             * The navigate() method is responsible for navigation between checkout step
-             * during checkout. You can add custom logic, for example some conditions
-             * for switching to your custom step
-             */
-            navigate: function () {}
+            updateShippingData: function(address) {
+                let shippingData = {};
+                shippingData.firstname = address.firstname;
+                shippingData.lastname = address.lastname;
+                shippingData.city = address.city;
+                shippingData.street = '';
+
+                if (Array.isArray(address.street)) {
+                    shippingData.street = address.street.join(' ');
+                }
+
+                shippingData.postcode = address.postcode;
+                shippingData.countryId = address.countryId;
+
+                this.shippingData(shippingData);
+            },
+
+            edit: function() {
+                stepNavigator.navigateTo('shipping');
+            }
         });
     }
 );

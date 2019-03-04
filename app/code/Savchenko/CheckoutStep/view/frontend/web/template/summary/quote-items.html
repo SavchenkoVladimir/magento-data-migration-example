@@ -1,0 +1,33 @@
+<div class="quote-items" style="border-bottom: 1px solid rgb(51, 51, 51);">
+    <h4>Quote items summary</h4>
+    <ul data-bind="foreach: { data: getQuoteItems(), as: 'item' }">
+        <li>
+            <img data-bind="attr: { src: item.thumbnail }"/>
+            <div class="details">
+                <h5 data-bind="text: item.name"></h5>
+                <ul>
+                    <li>
+                        <span data-bind="i18n: 'Qty:'"></span>
+                        <span data-bind="text: item.qty"></span>
+                    </li>
+                    <li>
+                        <span data-bind="i18n: 'Base price:'"></span>
+                        <span data-bind="text: $parent.getFormattedPrice(item.base_price)"></span>
+                    </li>
+                    <li>
+                        <span data-bind="i18n: 'Discount:'"></span>
+                        <span data-bind="text: $parent.getFormattedPrice(item.base_discount_amount)"></span>
+                    </li>
+                    <li>
+                        <span data-bind="i18n: 'Item final price:'"></span>
+                        <span data-bind="text: $parent.getFormattedPrice(item.base_price_incl_tax)"></span>
+                    </li>
+                    <li>
+                        <span data-bind="i18n: 'Subtotal:'"></span>
+                        <span data-bind="text: $parent.getFormattedPrice(item.base_row_total)"></span>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>

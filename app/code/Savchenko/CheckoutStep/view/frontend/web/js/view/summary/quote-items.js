@@ -22,13 +22,15 @@ define(
         'ko',
         'uiComponent',
         'Magento_Checkout/js/model/quote',
-        'Magento_Catalog/js/price-utils'
+        'Magento_Catalog/js/price-utils',
+        'mage/url'
     ],
     function (
         ko,
         Component,
         quote,
-        priceUtils
+        priceUtils,
+        urlBuilder
     ) {
         'use strict';
 
@@ -36,6 +38,10 @@ define(
             defaults: {
                 template: 'Savchenko_CheckoutStep/summary/quote-items'
             },
+
+            productPathPrefix: 'media/catalog/product/',
+
+            triggerNamePrefix: 'item',
 
             /**
              * @return {Object}
@@ -50,6 +56,32 @@ define(
              */
             getFormattedPrice: function (price) {
                 return priceUtils.formatPrice(price, quote.getPriceFormat());
+            },
+
+            /**
+             * @param item
+             * @return {string}
+             */
+            getImageUrl: function (item) {
+                let imagePath = this.productPathPrefix + item.product.small_image;
+                return urlBuilder.build(imagePath);
+            },
+
+            /**
+             * @param item
+             * @return {string}
+             */
+            getTriggerName: function (item) {
+                return  this.triggerNamePrefix + item.item_id;
+            },
+
+            /**
+             * @param item
+             * @return {string}
+             */
+            getTrigger: function (item) {
+                let trigger = '[class=' + this.triggerNamePrefix + item.item_id + ']';
+                return trigger;
             }
         });
     }

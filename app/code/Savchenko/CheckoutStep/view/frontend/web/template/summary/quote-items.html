@@ -1,8 +1,22 @@
 <div class="quote-items" style="border-bottom: 1px solid rgb(51, 51, 51);">
     <h4>Quote items summary</h4>
     <ul data-bind="foreach: { data: getQuoteItems(), as: 'item' }">
-        <li>
-            <img data-bind="attr: { src: item.thumbnail }"/>
+        <li class="summary-item">
+            <img data-bind="attr: { src: item.thumbnail, class: $parent.getTriggerName(item) }" />
+            <div class="message-system-list"
+                     style="display: none;"
+                 data-bind="mageInit: {
+                    'Magento_Ui/js/modal/modal':{
+                        'type': 'custom',
+                        'trigger': $parent.getTrigger(item),
+                        'wrapperClass': 'summary-item',
+                        'parentModalClass': '_has-modal-custom _has-auth-shown',
+                        'responsive': true,
+                        'overlayClass': 'dropdown-overlay modal-custom-overlay',
+                        'buttons': []
+                    }}">
+                <img data-bind="attr: {src: $parent.getImageUrl(item), alt: 'Product image'}"/>
+            </div>
             <div class="details">
                 <h5 data-bind="text: item.name"></h5>
                 <ul>

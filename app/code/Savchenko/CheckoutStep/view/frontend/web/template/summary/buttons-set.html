@@ -1,10 +1,16 @@
 <div class="actions-toolbar">
     <div class="primary">
-        <button class="action primary checkout" type="submit" >
+        <button class="action primary checkout" type="submit">
             <span data-bind="i18n: 'Place Order', click: placeOrder">Place Order</span>
         </button>
-        <button class="action primary checkout" type="submit" style="background-color: #eb5202; border: 1px solid #eb5202;">
-            <span data-bind="i18n: 'Show error'">Place Order</span>
+        <button class="action primary checkout" type="submit"
+                style="background-color: #eb5202; border: 1px solid #eb5202;">
+            <span data-bind="i18n: 'Show error', click: showError">Place Order</span>
         </button>
+    </div>
+    <div class="messages">
+        <!-- ko foreach: getRegion('messages') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
     </div>
 </div>

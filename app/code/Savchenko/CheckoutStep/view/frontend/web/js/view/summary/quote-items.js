@@ -37,10 +37,17 @@ define(
                 template: 'Savchenko_CheckoutStep/summary/quote-items'
             },
 
+            /**
+             * @return {Object}
+             */
             getQuoteItems: function(){
                 return quote.getItems();
             },
 
+            /**
+             * @param {string} price
+             * @return {string}
+             */
             getFormattedPrice: function (price) {
                 return priceUtils.formatPrice(price, quote.getPriceFormat());
             }

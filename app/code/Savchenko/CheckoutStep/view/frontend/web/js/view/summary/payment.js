@@ -39,21 +39,32 @@ define(
             address: ko.observable({}),
             method: ko.observable({}),
 
+            /**
+             * @inheritDoc
+             * @return {exports}
+             */
             initialize: function () {
                 this._super();
                 let self = this;
 
-                quote.billingAddress.subscribe(function (address) {
-                    self.updateAddress(address);
-                }, this);
+                quote.billingAddress.subscribe(
+                    function (address) { self.updateAddress(address); },
+                    this
+                );
 
-                quote.paymentMethod.subscribe(function (method) {
-                    self.updateMethod(method);
-                }, this);
+                quote.paymentMethod.subscribe(
+                    function (method) { self.updateMethod(method); },
+                    this
+                );
 
                 return this;
             },
 
+            /**
+             * Update this address property
+             *
+             * @param address
+             */
             updateAddress: function (address) {
                 let addr = {};
                 addr.city = address.city;
@@ -68,8 +79,14 @@ define(
                 this.address(addr);
             },
 
-            // WARNING: other payment methods can have different title property
-            // TODO: implement appropriate title for other payment methods
+            /**
+             * WARNING: other payment methods can have different title property
+             * TODO: implement appropriate title for other payment methods
+             *
+             * Update this method property
+             *
+             * @param method
+             */
             updateMethod: function (method) {
                 let payment = {};
                 payment.title = '';
@@ -81,6 +98,9 @@ define(
                 this.method(payment)
             },
 
+            /**
+             * Go to payment edit step
+             */
             edit: function () {
                 stepNavigator.navigateTo('payment');
             }

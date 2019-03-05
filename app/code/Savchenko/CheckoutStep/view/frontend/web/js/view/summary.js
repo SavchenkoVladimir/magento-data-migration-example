@@ -43,8 +43,8 @@ define(
             isVisible: ko.observable('summary'),
 
             /**
-             *
-             * @returns {*}
+             * @inheritDoc
+             * @return {exports}
              */
             initialize: function () {
                 this._super();

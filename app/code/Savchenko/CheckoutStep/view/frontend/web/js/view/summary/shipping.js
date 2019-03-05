@@ -39,6 +39,10 @@ define(
 
             shippingData: ko.observable({}),
 
+            /**
+             * @inheritDoc
+             * @return {exports}
+             */
             initialize: function () {
                 this._super();
                 let self = this;
@@ -50,6 +54,9 @@ define(
                 return this;
             },
 
+            /**
+             * @param {array} address
+             */
             updateShippingData: function(address) {
                 let shippingData = {};
                 shippingData.firstname = address.firstname;
@@ -67,6 +74,9 @@ define(
                 this.shippingData(shippingData);
             },
 
+            /**
+             * Navigate to shipping edit step
+             */
             edit: function() {
                 stepNavigator.navigateTo('shipping');
             }

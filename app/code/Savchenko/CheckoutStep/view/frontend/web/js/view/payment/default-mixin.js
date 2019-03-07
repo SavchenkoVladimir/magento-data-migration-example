@@ -30,8 +30,12 @@ define(
     ) {
         'use strict';
 
-        // Override cache-on-delivery method
-        // Disable place order and go to summary page
+        /**
+         * Override cache-on-delivery method
+         * Disable place order and go to summary page
+         *
+         * @type {{defaults: {template: string}, proceedSummary: proceedSummary}}
+         */
         var mixin = {
 
             defaults: {
